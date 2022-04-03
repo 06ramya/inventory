@@ -43,10 +43,26 @@ public class ProductController {
 		return new ResponseEntity<Product>(productService.getProductById(id),HttpStatus.OK);
 
 	}
-	@GetMapping("/productGroupByBrandId")
-	public List<Product> getProductGroupByBrandId(String brandId){
+	@GetMapping("/productGroupByBrandId/{brandId}")
+	public List<Product> getProductGroupByBrandId(@PathVariable("brandId")String brandId){
 		return productService.getProductGroupByBrandId(brandId);
 	}
+	@GetMapping("/ProductNameById/{id}")
+    public Product getProductNameById(@PathVariable("id") long id) {
+	return productService.getProductNameById(id);
+    }
+	@GetMapping("/ProductByDateSold/")
+	public List<Product> getProductByDateSold(@RequestParam String dateSold){
+		return productService.getProductByDateSold(dateSold);
+	}
+	@GetMapping("/ProductByDateReceived/")
+	public List<Product> getProductByDateReceived(@RequestParam String dateReceived){
+		return productService.getProductByDateReceived(dateReceived);
+	}
+    @GetMapping("/ProductsByOrderId/{id}")
+    public List<Product> getProductsByOrderId(@PathVariable("id") long id) {
+    	return productService.getProductsByOrderId(id);
+    }
 
 	@PutMapping("{id}")
 	public ResponseEntity<Product> updateProduct(@PathVariable("id") long id,@RequestBody Product product){
@@ -58,8 +74,17 @@ public class ProductController {
 		productService.deleteProduct(id);
 		return new ResponseEntity<String>("Product record deleted",HttpStatus.OK);
 	}
+     @GetMapping("/productByProductName/{productName}")
+     public List<Product>getProductByProductName(@PathVariable("productName")String productName)
+     {
+    	 return productService.getProductByProductName(productName);
+     }
+     
+	@GetMapping("/productGroupByProductName/{productName}")
+	public List<Product>getProductGroupByProductName(@PathVariable("productName")String productName){
+		return productService.getProductGroupByProductName(productName);
+	}
 
-	
 }
 
 

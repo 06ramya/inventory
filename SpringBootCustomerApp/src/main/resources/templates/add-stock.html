@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>Add Stock Details</title>
+</head>
+<body>
+<body class="container">
+<h1 ><bold>Stock Registration</bold></h1><br><br>
+<form th:action="@{/admin/saveStock}" th:object="${stock}" method="post" class="form needs-validation form-horizontal">
+<div class="form-group ">
+<label class="control-label col-sm-2"  for="stock_id">Stock Id</label>
+<div class="col-sm-5 input-group input-group-lg"> 
+<input class="form-control" type="text" th:field="*{stockId}" id="stockId" placeholder="Stock Id">
+        <div  th:if="${#fields.hasErrors('stockId')}" th:errors="*{stockId}"></div> 
+</div>
+</div>
+<div class="form-group ">
+<label class="control-label col-sm-2"  for="stock_no">Stock No</label>
+<div class="col-sm-5 input-group input-group-lg"> 
+<input class="form-control" type="text" th:field="*{stockNo}" id="stockNo" placeholder="Stock No">
+        <div  th:if="${#fields.hasErrors('stockNo')}" th:errors="*{stockNo}"></div> 
+</div>
+</div>
+<div class="form-group ">
+<label class="control-label col-sm-2"  for="stock_items">Stock Items</label>
+<div class="col-sm-5 input-group input-group-lg"> 
+<input class="form-control" type="text" th:field="*{stockItems}" id="stockItems" placeholder="Stock Items">
+        <div  th:if="${#fields.hasErrors('stockItems')}" th:errors="*{stockItems}"></div> 
+</div>
+</div>
+<center>
+<input type="submit"  class="btn btn-primary mb-3" value="Add Stock Items">
+</li></center>
+</form>
+
+</body>
+</html>

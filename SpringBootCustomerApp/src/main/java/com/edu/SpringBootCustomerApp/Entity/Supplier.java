@@ -1,10 +1,13 @@
 package com.edu.SpringBootCustomerApp.Entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -23,7 +26,11 @@ public class Supplier {
 	@Column(name="email")
 	private String email;
 	@Column(name="mobile_no")
-	private int mobileNo;
+	private String mobileNo;
+	@OneToMany(mappedBy="supplier")
+	private List<Stock> stock;
+	@OneToMany(mappedBy="supplier")
+	private List<Order> order;
 	public long getSupplierId() {
 		return supplierId;
 	}
@@ -48,10 +55,10 @@ public class Supplier {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getMobileNo() {
+	public String getMobileNo() {
 		return mobileNo;
 	}
-	public void setMobileNo(int mobileNo) {
+	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
 	}
 	

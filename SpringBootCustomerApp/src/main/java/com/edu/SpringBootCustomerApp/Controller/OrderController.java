@@ -38,6 +38,10 @@ public class OrderController {
 	public ResponseEntity<Order> getOrderById(@PathVariable("id") long id){
 		return new ResponseEntity<Order>(orderService.getOrderById(id),HttpStatus.OK);
 	}
+	@GetMapping("/orderByOrderNo/{orderNo}")
+	public Order getOrderByOrderNo(@PathVariable("orderNo")long orderNo){
+	return orderService.getOrderById(orderNo);
+	}
 	@PutMapping("{id}")
 	public ResponseEntity<Order> updateOrder(@PathVariable("id") long id,@RequestBody Order order){
 		return new ResponseEntity<Order>(orderService.updateOrder(order,id),HttpStatus.OK);

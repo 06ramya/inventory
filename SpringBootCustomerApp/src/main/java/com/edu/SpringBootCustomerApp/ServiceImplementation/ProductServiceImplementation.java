@@ -69,7 +69,40 @@ public void deleteProduct(long id) {
 
 @Override
 public List<Product> getProductGroupByBrandId(String brandId){
-	return productRepository.findProductGroupByBrandId(brandId );
+	return productRepository.findByBrandId(brandId );
+}
+@Override
+public List<Product> getProductByProductName(String productName){
+	return productRepository.findByProductName(productName);
+}
+@Override
+public List<Product> getProductGroupByProductName(String productName){
+	return productRepository.findByProductName(productName);
+}
+/*@Overide
+public List<Product> getProductByProductName(String productName){
+	return productRepository.findProductsByProductName(productName);
+}*/
+@Override
+public List<Product> getProductByDateSold(String dateSold){
+	return productRepository.findProductByDateSold(dateSold);
+}
+@Override
+public List<Product> getProductByDateReceived(String dateReceived){
+	return productRepository.findProductByDateReceived(dateReceived);
+}
+
+
+
+@Override
+public Product getProductNameById(long id) {
+	
+	return productRepository.findProductNameById(id);
+}
+
+@Override
+public List<Product> getProductsByOrderId(long id) {
+	return productRepository.findProductsByOrderId(id);
 }
 }
 

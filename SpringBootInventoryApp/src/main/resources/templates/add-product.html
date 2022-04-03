@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>Add Product Details</title>
+</head>
+<body class="container">
+<h1 ><bold>Product Registration</bold></h1><br><br>
+<form th:action="@{/admin/saveProduct}" th:object="${product}" method="post" class="form needs-validation form-horizontal">
+<div class="form-group ">
+<label class="control-label col-sm-2"  for="pro_id">Product Id</label>
+<div class="col-sm-5 input-group input-group-lg"> 
+<input class="form-control" type="text" th:field="*{proId}" id="proId" placeholder="Product Id">
+        <div  th:if="${#fields.hasErrors('proId')}" th:errors="*{proId}"></div> 
+</div>
+</div>
+<div class="form-group ">
+<label class="control-label col-sm-2"  for="product_name">Product Name</label>
+<div class="col-sm-5 input-group input-group-lg"> 
+<input class="form-control" type="text" th:field="*{productName}" id="productName" placeholder="Product Name">
+        <div  th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"></div> 
+</div>
+</div>
+<div class="form-group ">
+<label class="control-label col-sm-2" for="brand_id">Brand Id </label>
+<div class="col-sm-5 input-group input-group-lg"> 
+<input class="form-control" type="text" th:field="*{brandId}" id="brandId" placeholder="Brand Id">
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('brandId')}" th:errors="*{brandId}"></div>
+
+</div>
+</div>
+<div class="form-group ">
+<label class="control-label col-sm-2" for="date_received">Date Received </label>
+<div class="col-sm-5 input-group input-group-lg"> 
+<input class="form-control" type="text" th:field="*{dateReceived}" id="dateReceived" placeholder="Date Received">
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('dateReceived')}" th:errors="*{dateReceived}"></div>
+
+</div>
+</div>
+<div class="form-group ">
+<label class="control-label col-sm-2" for="date_sold">Date Sold </label>
+<div class="col-sm-5 input-group input-group-lg"> 
+<input class="form-control" type="text" th:field="*{dateSold}" id="dateSold" placeholder="Date Sold">
+        <div class="alert alert-warning" th:if="${#fields.hasErrors('dateSold')}" th:errors="*{dateSold}"></div>
+
+</div>
+</div>
+ 
+</div>
+</div>
+<center>
+<input type="submit"  class="btn btn-primary mb-3" value="Add Product">
+    
+   <!-- <a th:href="@{/customer/getProducts}" class="btn btn-primary btn-md mb-3 float-right"> Product List</a> --> 
+    
+    </li></center>
+</form>
+
+</body>
+</html>

@@ -2,6 +2,7 @@ package com.edu.SpringBootCustomerApp.Entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,7 +24,7 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="pro_id")
-private long proId;
+private Long proId;
 	@Column(name="product_name")
 private String productName;
 	@Column(name="brand_id")
@@ -32,21 +34,24 @@ private String dateReceived;
 	@Column(name="date_sold")
 private String dateSold;
 	
-	public long getProId() {
+	public Long getProId() {
 		return proId;
 	}
 	@ManyToMany(mappedBy="pro")
-
-	List <Customer> cust;
-	@OneToOne
+    List <Customer> cust;
+	/*@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="order_id",nullable=false)
-	private Order order;
+	private Order order;*/
+	@OneToMany(mappedBy="product")
+	private List <Order> order;
 	
+	@OneToMany(mappedBy="product")
+	 private List <Stock> stock;
 	/*@ManyToMany
 	@JoinTable(name="product_customer",joinColumns=@JoinColumn(name="pro_id"),
 	inverseJoinColumns=@JoinColumn(name="cust_id"))*/
 	
-	public void setProId(long proId) {
+	public void setProId(Long proId) {
 		this.proId = proId;
 	}
 	public String getProductName() {
